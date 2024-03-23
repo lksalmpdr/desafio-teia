@@ -2,7 +2,7 @@ Esse projeto usa [Next.js](https://nextjs.org/) através do comando [`create-nex
 
 ## Como rodar?
 
-No seu terminal ou console, digite a seguinte instrução:
+No seu terminal ou console, acesse o diretório do projeto e digite a seguinte instrução:
 
 ```bash
 npm run dev
