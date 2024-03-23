@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --background-main-color-rgb: 52,62,61;
+  --background-light-main-color-rgb: 96, 116, 102 ;
+  --background-default-color-rgb: 174, 220, 192;
+  --background-accent-color-rgb: 123, 211, 137;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+    --background-main-color-rgb: 52,62,61;
+    --background-light-main-color-rgb: 96, 116, 102 ;
+    --background-default-color-rgb: 174, 220, 192;
+    --background-accent-color-rgb: 123, 211, 137;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-main-color-rgb))
+    )
+    rgb(var(--background-light-main-color-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  padding: 20px ;
+}
+
+h1 {
+  width: 100%;
+  font-weight: 600;
+  font-size: x-large;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-direction: column;
+}
+
+  .registros {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 150px 150px 150px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .registros {
+      grid-template-columns: repeat(1, 1fr); /* Um card por linha */
+    }
+  }
+  
+  /* Estilos para telas médias */
+  @media screen and (min-width: 601px) and (max-width: 1024px) {
+    .registros {
+      grid-template-columns: repeat(3, 1fr); /* Três cards por linha */
+    }
+  }
+  
+  /* Estilos para telas grandes */
+  @media screen and (min-width: 1025px) {
+    .registros {
+      grid-template-columns: repeat(6, 1fr); /* Seis cards por linha */
+    }
+  }
+
+.registro-card {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.registro-card h2 {
+  max-width: 150px;
+  margin-top: 0;
+}
+
+.registro-card img {
+  max-width: 100%;
+  height: auto;
+
+}
+
+.text-dark {
+  color: #505050;
+}
+
+.loading {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.error {
+  font-size: 20px;
+  color: red;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.paginacao {
+  background-color: rgb(var(--background-light-main-color-rgb));
+  color: #505050;
+  border: 1px solid;
+  padding: 5px 15px;
+}
+
+.paginacao .ativo {
+  background-color: rgb(var(--background-accent-color-rgb));
+  color: #505050;
+  border: 1px solid;
+  padding: 5px;
+}
+
