@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Esse projeto usa [Next.js](https://nextjs.org/) através do comando [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Como rodar?
 
-First, run the development server:
+No seu terminal ou console, digite a seguinte instrução:
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
-# or
+# ou
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+No seu navegador web, abra o endereço indicado no terminal ( por padrão é [http://localhost:3000] - http://localhost:3000, mas a porta pode variar com a que estiver disponível em seu sistema).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O arquivo inicial a ser editado é `app/page.tsx`. Toda alteração pode ser verificada automaticamente no navegador.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Sobre a implementação
 
-To learn more about Next.js, take a look at the following resources:
+Este código implementa uma aplicação React que exibe registros em uma interface de usuário. Os registros são carregados inicialmente de um repositório e exibidos em uma lista paginada. Os usuários podem pesquisar registros por título e navegar entre as páginas de resultados.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Dependências
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Este código utiliza o framework React para construção da interface de usuário.
+Utiliza hooks do React, como useState e useEffect, para gerenciar estado e efeitos colaterais.
+Requer uma estrutura de diretórios específica, incluindo arquivos de interfaces (interfaces/registro.ts) e repositório (repository/registroRepository.ts).
 
-## Deploy on Vercel
+## Componente Principal: Home
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+O componente principal é chamado Home, que representa a página principal da aplicação.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Estado
+`registros`: Armazena todos os registros recuperados do repositório.
+`registrosFiltrados`: Armazena os registros filtrados com base no termo de pesquisa.
+`isLoading`: Indica se a página está carregando.
+`error`: Armazena mensagens de erro durante o carregamento dos registros.
+`termoPesquisa`: Armazena o termo de pesquisa inserido pelo usuário.
+`paginaAtual`: Armazena o número da página atual exibida.
+`registrosPorPagina`: Define o número de registros exibidos por página.
+Funções Principais
+`paginacao`: Atualiza o estado da página atual para exibição dos registros correspondentes.
+`handleChange`: Manipula a alteração do termo de pesquisa e filtra os registros correspondentes.
+`filtraRegistros`: Filtra os registros com base no termo de pesquisa inserido pelo usuário.
+`debounce`: Função utilitária para limitar a frequência de chamadas à função de filtro durante a digitação.
+
+## Efeitos Colaterais
+Utiliza o hook `useEffect` para carregar os registros iniciais do repositório ao montar o componente.
+## Renderização Condicional
+Exibe um indicador de carregamento enquanto os registros estão sendo carregados.
+Exibe mensagens de erro caso ocorra algum problema durante o carregamento.
+Exibe os registros filtrados e paginados.
+
+## Componentes de Interface
+
+O componente Home renderiza um cabeçalho com um campo de pesquisa e uma lista de registros.
+Cada registro é exibido como um card com título e imagem.
+Exibe a paginação para navegar entre as páginas de resultados.
+
+## Estrutura de Arquivos
+
+`interfaces/registro.ts`: Define a estrutura de dados do registro.
+`repository/registroRepository.ts`: Fornece métodos para recuperar registros do repositório.
+
+## Observações
+
+O código faz uso de técnicas de otimização, como debounce, para melhorar a experiência do usuário durante a pesquisa.
+A paginação é implementada de forma dinâmica com base no número total de registros e no número de registros exibidos por página.
+O código segue as melhores práticas de desenvolvimento React, incluindo a separação de responsabilidades e o uso de hooks para gerenciar estado e efeitos colaterais.
+Esta documentação fornece uma visão geral do código e suas funcionalidades principais. Para detalhes adicionais sobre implementações específicas, consulte o código-fonte diretamente.
